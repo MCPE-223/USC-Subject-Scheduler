@@ -212,3 +212,23 @@ table.table1{
 {
   margin: -10px 0 15px 0;
 }
+
+#ysched
+{
+  width: 450px;
+  margin:auto;
+  padding-bottom: 10px;
+}
+
+#sy, #syplus  
+{
+  width:50px;
+  text-align: center;
+  border: 1px solid rgba(122, 192, 0, 0.15);
+  font-height: 12px;
+  height: 35px;
+  background-image:-webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+  background-position: center right;
+  background-repeat: no-repeat;
+  border: 0px solid #FFF;
+}

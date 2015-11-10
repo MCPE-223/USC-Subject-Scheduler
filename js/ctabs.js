@@ -65,3 +65,17 @@ function credential() {
     document.getElementById("usercred").innerHTML = "Username: admin";
     document.getElementById("passcred").innerHTML = "Password: admin";
 }
+
+function syplusfunc(val){
+	if(val == 0)
+	{
+		var x = document.getElementById("sy").value;
+		x++;
+		document.getElementById("syplus").value = x;
+	}else if(val == 1)
+	{
+		var x = document.getElementById("syplus").value;
+		x--;
+		document.getElementById("sy").value = x;
+	}
+}
