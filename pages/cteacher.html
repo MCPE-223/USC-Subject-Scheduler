@@ -162,7 +162,7 @@
                             </a> 
                             <ul class="treeview-menu">
                               <li><a href="../pages/csubject.html"><i class="fa fa-angle-double-right"></i> Create Subject</a></li>
-                              <li><a href="../pages/msubject.html"><i class="fa fa-angle-double-right"></i> Manage Subject</a></li>
+                              <li><a href="../pages/msubject.php"><i class="fa fa-angle-double-right"></i> Manage Subject</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -173,7 +173,8 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="#"><i class="fa fa-angle-double-right"></i> Create Teacher</a></li>
-                                <li><a href="../pages/mteacher.html"><i class="fa fa-angle-double-right"></i> Manage Teacher</a></li>
+                                <li><a href="mteacher.php"><i class="fa fa-angle-double-right"></i> Manage Teacher</a></li>
+                                <li><a href="mteacher-exp.php"><i class="fa fa-angle-double-right" id="add-pad"></i> Add Expertise</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -184,9 +185,11 @@
                             </a>
                             <ul class="treeview-menu">
                               <li><a href="cbuild.html"><i class="fa fa-angle-double-right"></i> Create Building</a></li>
-                              <li><a href="../pages/croom.html"><i class="fa fa-angle-double-right"></i> Create Room</a></li>
+                              <li><a href="croom.php"><i class="fa fa-angle-double-right"></i> Create Room</a></li>
+                              <li><a href="cay.html"><i class="fa fa-angle-double-right"></i> Create Acadamic Year</a></li>
+                              <li><a href="cas.html"><i class="fa fa-angle-double-right"></i> Create Acadamic Sem</a></li>
                               <!-- <li><a href="../pages/cdp.html"><i class="fa fa-angle-double-right"></i> Customize Day/Period</a></li> -->
-                              <li><a href="../pages/csched.html"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
+                              <li><a href="csched.php"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
                             </ul>
                         </li>
                         <li>
@@ -223,7 +226,7 @@
                 <!-- Main content -->
                 <section class="content">
                 <div  class="form">
-                    <form id="contactform"> 
+                    <form action = "cteacher.php" method = "post">
                         <p class="contact"><label for="lname">Last Name</label></p> 
                         <input id="lname" name="lname" placeholder="Last Name" required="" tabindex="1" type="text"> 
                          
@@ -232,42 +235,20 @@
 
                         <p class="contact"><label for="fname">Employee Number</label></p> 
                         <input id="enum" name="enum" placeholder="Employee Number" required="" tabindex="1" type="text"> 
-
+<!-- 
                         <p class="contact"><label for="email">Email</label></p> 
                         <input id="email" name="email" placeholder="example@domain.com" type="email"> 
 
-                        <fieldset>
-                              <label>Birthday</label>
-                              <label class="month"> 
-                              <select class="select-style" name="birthmonth">
-                              <option value="">Month</option>
-                              <option  value="01">January</option>
-                              <option value="02">February</option>
-                              <option value="03" >March</option>
-                              <option value="04">April</option>
-                              <option value="05">May</option>
-                              <option value="06">June</option>
-                              <option value="07">July</option>
-                              <option value="08">August</option>
-                              <option value="09">September</option>
-                              <option value="10">October</option>
-                              <option value="11">November</option>
-                              <option value="12" >December</option>
-                              </label>
-                              </select>    
-                              <label>Day<input class="birthday" maxlength="2" name="BirthDay"  placeholder="Day" ></label>
-                              <label>Year <input class="birthyear" maxlength="4" name="BirthYear" placeholder="Year"></label>
-                        </fieldset>
-          
+                                 
                         <select class="select-style gender" name="gender">
-                        <option value="select">Gender</option>
-                        <option value="m">Male</option>
-                        <option value="f">Female</option>
+                        <option value="">Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
                         <option value="others">Other</option>
                         </select><br><br>
                     
                         <p class="contact"><label for="phone">Mobile phone</label></p> 
-                        <input id="phone" name="phone" placeholder="Phone Number" type="text"> <br>
+                        <input id="phone" name="phone" placeholder="Phone Number" type="text"> <br> -->
                         <!-- <input class="buttom" name="submit" id="submit" tabindex="5" value="Create" type="submit">  -->
                         <button class="btn btn-success" name="submit" id="submit" tabindex="5" value="Create" type="submit">Submit</button>     
                      </form> 

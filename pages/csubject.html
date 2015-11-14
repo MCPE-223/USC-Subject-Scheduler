@@ -162,7 +162,7 @@
                             </a> 
                             <ul class="treeview-menu">
                               <li><a href="#"><i class="fa fa-angle-double-right"></i> Create Subject</a></li>
-                              <li><a href="../pages/msubject.html"><i class="fa fa-angle-double-right"></i> Manage Subject</a></li>
+                              <li><a href="../pages/msubject.php"><i class="fa fa-angle-double-right"></i> Manage Subject</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -173,7 +173,8 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="../pages/cteacher.html"><i class="fa fa-angle-double-right"></i> Create Teacher</a></li>
-                                <li><a href="../pages/mteacher.html"><i class="fa fa-angle-double-right"></i> Manage Teacher</a></li>
+                                <li><a href="mteacher.php"><i class="fa fa-angle-double-right"></i> Manage Teacher</a></li>
+                                <li><a href="mteacher-exp.php"><i class="fa fa-angle-double-right" id="add-pad"></i> Add Expertise</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -184,9 +185,11 @@
                             </a>
                             <ul class="treeview-menu">
                               <li><a href="cbuild.html"><i class="fa fa-angle-double-right"></i> Create Building</a></li>
-                              <li><a href="../pages/croom.html"><i class="fa fa-angle-double-right"></i> Create Room</a></li>
+                              <li><a href="croom.php"><i class="fa fa-angle-double-right"></i> Create Room</a></li>
+                              <li><a href="cay.html"><i class="fa fa-angle-double-right"></i> Create Acadamic Year</a></li>
+                              <li><a href="cas.html"><i class="fa fa-angle-double-right"></i> Create Acadamic Sem</a></li>
                               <!-- <li><a href="../pages/cdp.html"><i class="fa fa-angle-double-right"></i> Customize Day/Period</a></li> -->
-                              <li><a href="../pages/csched.html"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
+                              <li><a href="csched.php"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
                             </ul>
                         </li>
                         <li>
@@ -223,19 +226,20 @@
                 <!-- Main content -->
                 <section class="content">
                 <div  class="form">
-                    <form id="contactform"> 
-                        <p class="contact"><label for="lname">Subject Code</label></p> 
+                    <form action = "csubject.php" method = "post"> 
+                        <p class="contact"><label >Subject Code</label></p> 
                         <input class="sample" id="scode" name="scode" placeholder="Subject Code" required="" tabindex="1" type="text"> 
                          
-                        <p class="contact"><label for="fname">Subject Description</label></p> 
+                        <p class="contact"><label >Subject Description</label></p> 
                         <input class="sample" id="sdesc" name="sdesc" placeholder="Subject Description" required="" tabindex="1" type="text"> 
 
-                        <p class="contact"><label for="fname">Units</label></p> 
+                        <p class="contact"><label >Units</label></p> 
                         <input id="units" name="units" placeholder="Units" required="" tabindex="1" type="text"> 
                 
-                        <p class="contact"><label for="fname">Class Hours</label></p> 
+                        <p class="contact"><label >Class Hours</label></p> 
                         <input id="chours" name="chours" placeholder="Class Hours" required="" tabindex="1" type="text"> 
-
+                        <p class="contact"><label >Offerings</label></p> 
+                        <input id="offerings" name="offerings" placeholder="Offerings" required="" tabindex="1" type="text">
                         
                         <!-- <input class="buttom" name="submit" id="submit" tabindex="5" value="Create" type="submit">  -->
                         <button class="btn btn-success" name="submit" id="submit" tabindex="5" value="Create" type="submit">Submit</button>     

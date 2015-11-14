@@ -162,7 +162,7 @@
                             </a> 
                             <ul class="treeview-menu">
                               <li><a href="../pages/csubject.html"><i class="fa fa-angle-double-right"></i> Create Subject</a></li>
-                              <li><a href="../pages/msubject.html"><i class="fa fa-angle-double-right"></i> Manage Subject</a></li>
+                              <li><a href="../pages/msubject.php"><i class="fa fa-angle-double-right"></i> Manage Subject</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -173,7 +173,8 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="../pages/cteacher.html"><i class="fa fa-angle-double-right"></i> Create Teacher</a></li>
-                                <li><a href="../pages/mteacher.html"><i class="fa fa-angle-double-right"></i> Manage Teacher</a></li>
+                                <li><a href="mteacher.php"><i class="fa fa-angle-double-right"></i> Manage Teacher</a></li>
+                                <li><a href="mteacher-exp.php"><i class="fa fa-angle-double-right" id="add-pad"></i> Add Expertise</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -184,9 +185,11 @@
                             </a>
                             <ul class="treeview-menu">
                               <li><a href="#"><i class="fa fa-angle-double-right"></i> Create Building</a></li>
-                              <li><a href="croom.html"><i class="fa fa-angle-double-right"></i> Create Room</a></li>
+                              <li><a href="croom.php"><i class="fa fa-angle-double-right"></i> Create Room</a></li>
+                              <li><a href="cay.html"><i class="fa fa-angle-double-right"></i> Create Acadamic Year</a></li>
+                              <li><a href="cas.html"><i class="fa fa-angle-double-right"></i> Create Acadamic Sem</a></li>
                               <!-- <li><a href="../pages/cdp.html"><i class="fa fa-angle-double-right"></i> Customize Day/Period</a></li> -->
-                              <li><a href="../pages/csched.html"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
+                              <li><a href="csched.php"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
                             </ul>
                         </li>
                         <li>
@@ -223,9 +226,12 @@
                 <!-- Main content -->
                 <section class="content">
                 <div  class="form">
-                    <form id="contactform"> 
-                        <p class="contact"><label for="lname">Building</label></p> 
-                        <input class="scode" name="bcode" placeholder="Building Code" required="" tabindex="1" type="text"> 
+                    <form action = "cbuild.php" method = "post"> 
+                        <p class="contact"><label for="lname">Building Code</label></p> 
+                        <input name="bcode" class="bcode" placeholder="Building Code" required="" tabindex="1" type="text"> 
+
+                        <p class="contact"><label for="lname">Building Description</label></p> 
+                        <input name="bdesc" class="bdesc" placeholder="Building Description" required="" tabindex="1" type="text"> 
                                                 
                         <!-- <input class="buttom" name="submit" id="submit" tabindex="5" value="Create" type="submit">  -->
                         <button class="btn btn-success" name="submit" id="submit" tabindex="5" value="Create" type="submit">Submit</button>     

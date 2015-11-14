@@ -1,3 +1,7 @@
+<?php
+    require("connect.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -162,7 +166,7 @@
                             </a> 
                             <ul class="treeview-menu">
                               <li><a href="../pages/csubject.html"><i class="fa fa-angle-double-right"></i> Create Subject</a></li>
-                              <li><a href="../pages/msubject.html"><i class="fa fa-angle-double-right"></i> Manage Subject</a></li>
+                              <li><a href="#"><i class="fa fa-angle-double-right"></i> Manage Subject</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -173,7 +177,8 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="../pages/cteacher.html"><i class="fa fa-angle-double-right"></i> Create Teacher</a></li>
-                                <li><a href="mteacher.php><i class="fa fa-angle-double-right"></i> Manage Teacher</a></li>
+                                <li><a href="mteacher.php"><i class="fa fa-angle-double-right"></i> Manage Teacher</a></li>
+                                <li><a href="mteacher-exp.php"><i class="fa fa-angle-double-right" id="add-pad"></i> Add Expertise</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -184,13 +189,15 @@
                             </a>
                             <ul class="treeview-menu">
                               <li><a href="cbuild.html"><i class="fa fa-angle-double-right"></i> Create Building</a></li>
-                              <li><a href="#"><i class="fa fa-angle-double-right"></i> Create Room</a></li>
-                              <!-- <li><a href="../pages/cdp.html"><i class="fa fa-angle-double-right"></i> Customize Day/Period</a></li> -->
-                              <li><a href="../pages/csched.html"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
+                              <li><a href="croom.php"><i class="fa fa-angle-double-right"></i> Create Room</a></li>
+                              <li><a href="cay.html"><i class="fa fa-angle-double-right"></i> Create Acadamic Year</a></li>
+                              <li><a href="cas.html"><i class="fa fa-angle-double-right"></i> Create Acadamic Sem</a></li>
+                              <!-- <li><a href="cdp.html"><i class="fa fa-angle-double-right"></i> Customize Day/Period</a></li> -->
+                              <li><a href="csched.php"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="../pages/calendar.html">
+                            <a href="calendar.html">
                                 <i class="fa fa-calendar"></i> <span>Calendar</span>
                                 <small class="badge pull-right bg-red">soon</small>
                             </a>
@@ -211,32 +218,51 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Create Room
+                        Manage Subject
                         <small>Control panel</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class="active">Create Room</li>
+                        <li class="active">Manage Subject</li>
                     </ol>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
                 <div  class="form">
-                    <form id="contactform"> 
-                        <div class='bwrap'>
-                            <p class='contact'> <label for="bnum">Building</label></p>
-                            <select id="bcode" name="building" class="select-style gender">
-                                <option value="Building 1">Building 1</option>
-                                <option value="Building 2">Building 2</option>
-                                <option value="Building 3">Building 3</option>
-                            </select>
-                        </div>
-                        <p class="contact"><label for="lname">Room Number</label></p> 
-                        <input id="scode" name="scode" placeholder="Room Number" required="" tabindex="1" type="text"> 
-                                                
+                    <form id="subjectform"> 
+                        
+                        <p class="contact"><label>Subject Code</label></p>
+                        <select id="scode" class="select-style gender" onChange=" showSubject(this.value)">
+                        <?php
+                            $sql = "SELECT * FROM subject";
+                            $result = mysqli_query($conn, $sql);
+                            if(mysqli_num_rows($result) > 0) {
+                                echo "<option> Select Subject </option> ";
+                                while($row = mysqli_fetch_assoc($result)) {
+                                    echo "<option>".$row["subject_code"]."</option>";
+                                }
+                            } else {
+                                echo "NO RESULT";
+                            }
+                        ?> 
+                        </select>
+                        <p class="contact"><label>Subject Description</label></p>
+                        <input class="sample" id="sdesc" name="sdesc" value="" placeholder="Subject Description" required="" tabindex="1" type="text"> 
+
+                                              
+                        <p class="contact"><label for="fname">Units</label></p> 
+                        <input id="units" name="units" placeholder="Units" required="" tabindex="1" type="text"> 
+                
+                        <p class="contact"><label for="fname">Class Hours</label></p> 
+                        <input id="chours" name="chours" placeholder="Class Hours" required="" tabindex="1" type="text"> 
+                        <p class="contact"><label >Offerings</label></p> 
+                        <input id="offerings" name="offerings" placeholder="Offerings" required="" tabindex="1" type="text">
+                        
                         <!-- <input class="buttom" name="submit" id="submit" tabindex="5" value="Create" type="submit">  -->
-                        <button class="btn btn-success" name="submit" id="submit" tabindex="5" value="Create" type="submit">Submit</button>     
+                        <button class="btn btn-success" name="submit" id="submit" tabindex="5" value="edit" type="submit">Edit</button> 
+                        <button class="btn btn-info" name="submit" id="submit" tabindex="5" value="save" type="submit" disabled>Save</button> 
+                        <button class="btn btn-danger" name="delete" id="delete" tabindex="10" value="delete" type="submit">Delete</button>     
                      </form> 
                 </div>      
 
