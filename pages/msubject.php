@@ -247,22 +247,23 @@
                             }
                         ?> 
                         </select>
-                        <p class="contact"><label>Subject Description</label></p>
-                        <input class="sample" id="sdesc" name="sdesc" value="" placeholder="Subject Description" required="" tabindex="1" type="text"> 
+                        <div name="sub-wrapper">
+                            <p class="contact"><label>Subject Description</label></p>
+                            <input class="sample" id="sdesc" name="sdesc" value="" placeholder="Subject Description" required="" tabindex="1" type="text"> 
 
-                                              
-                        <p class="contact"><label for="fname">Units</label></p> 
-                        <input id="units" name="units" placeholder="Units" required="" tabindex="1" type="text"> 
-                
-                        <p class="contact"><label for="fname">Class Hours</label></p> 
-                        <input id="chours" name="chours" placeholder="Class Hours" required="" tabindex="1" type="text"> 
-                        <p class="contact"><label >Offerings</label></p> 
-                        <input id="offerings" name="offerings" placeholder="Offerings" required="" tabindex="1" type="text">
-                        
+                                                  
+                            <p class="contact"><label for="fname">Units</label></p> 
+                            <input id="units" name="units" placeholder="Units" required="" tabindex="1" type="text"> 
+                    
+                            <p class="contact"><label for="fname">Class Hours</label></p> 
+                            <input id="chours" name="chours" placeholder="Class Hours" required="" tabindex="1" type="text"> 
+                            <p class="contact"><label >Offerings</label></p> 
+                            <input id="offerings" name="offerings" placeholder="Offerings" required="" tabindex="1" type="text">
+                        </div>
                         <!-- <input class="buttom" name="submit" id="submit" tabindex="5" value="Create" type="submit">  -->
                         <button class="btn btn-success" name="submit" id="submit" tabindex="5" value="edit" type="submit">Edit</button> 
                         <button class="btn btn-info" name="submit" id="submit" tabindex="5" value="save" type="submit" disabled>Save</button> 
-                        <button class="btn btn-danger" name="delete" id="delete" tabindex="10" value="delete" type="submit">Delete</button>     
+                        <button class="btn btn-danger" name="delete" id="delete" tabindex="10" value="delete" type="submit" disabled>Delete</button>     
                      </form> 
                 </div>      
 
