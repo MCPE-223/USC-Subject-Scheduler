@@ -233,7 +233,7 @@
                     <form id="subjectform"> 
                         
                         <p class="contact"><label>Subject Code</label></p>
-                        <select id="scode" class="select-style gender" onChange=" showSubject(this.value)">
+                        <select id="scode" class="select-style gender" name="subject_code">
                         <?php
                             $sql = "SELECT * FROM subject";
                             $result = mysqli_query($conn, $sql);
