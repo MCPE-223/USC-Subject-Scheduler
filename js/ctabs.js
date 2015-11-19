@@ -1,4 +1,4 @@
-function addRow(btn) {
+/*function addRow(btn) {
     var textbox1 = document.createElement("select");
  	var textbox2 = document.createElement("input");
     //Assign different attributes to the element.
@@ -26,7 +26,7 @@ function addRow(btn) {
     var box1 = document.getElementById("texp");
     box1.appendChild(textbox1);    
     box1.appendChild(textbox2);
- }
+ }*/
 
  function updateTeacher(val)
 {
@@ -82,4 +82,13 @@ function sched_next(val)
         document.getElementById("div2").style.display = 'none';
         document.getElementById("div3").style.display = 'block';
     }
+}
+
+function Just()
+{
+    var x=document.getElementById("just");
+    if(x.className == "dropdown user user-menu")
+        x.setAttribute("class", "dropdown user user-menu open");
+    else
+        x.setAttribute("class", "dropdown user user-menu");
 }
