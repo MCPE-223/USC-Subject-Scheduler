@@ -7,6 +7,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
     echo "<script>window.location.href='login.html';</script>";
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,7 +25,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
     <link href="../css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
+
     <link href="../css/ctabs.css" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -35,7 +36,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
     <![endif]-->
   </head>
   <body class="skin-blue">
-    <header class="header">
+      <header class="header">
             <a href="overview.php" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 Admin
@@ -120,7 +121,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                                 <i class="fa fa-angle-down pull-right"></i>
                             </a> 
                             <ul class="treeview-menu">
-                              <li><a href="../pages/csubject.php"><i class="fa fa-angle-double-right"></i> Create Subject</a></li>
+                              <li><a href="csubject.php"><i class="fa fa-angle-double-right"></i> Create Subject</a></li>
                               <li><a href="msubject.php"><i class="fa fa-angle-double-right"></i> Manage Subject</a></li>
                             </ul>
                         </li>
@@ -131,9 +132,9 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                                 <i class="fa fa-angle-down pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../pages/cteacher.php"><i class="fa fa-angle-double-right"></i> Create Teacher</a></li>
+                                <li><a href="cteacher.php"><i class="fa fa-angle-double-right"></i> Create Teacher</a></li>
                                 <li><a href="mteacher.php"><i class="fa fa-angle-double-right"></i> Manage Teacher</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" id="add-pad"></i> Add Expertise</a></li>
+                                <li><a href="mteacher-exp.php"><i class="fa fa-angle-double-right" id="add-pad"></i> Add Expertise</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -147,18 +148,18 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                               <li><a href="croom.php"><i class="fa fa-angle-double-right"></i> Create Room</a></li>
                               <li><a href="cay.php"><i class="fa fa-angle-double-right"></i> Create Acadamic Year</a></li>
                               <li><a href="cas.php"><i class="fa fa-angle-double-right"></i> Create Acadamic Sem</a></li>
-                              <!-- <li><a href="cdp.html"><i class="fa fa-angle-double-right"></i> Customize Day/Period</a></li> -->
+                              <!-- <li><a href="index.html"><i class="fa fa-angle-double-right"></i> Customize Day/Period</a></li> -->
                               <li><a href="csched.php"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="../pages/calendar.php">
+                            <a href="calendar.php">
                                 <i class="fa fa-calendar"></i> <span>Calendar</span>
                                 <small class="badge pull-right bg-red">soon</small>
                             </a>
                         </li>
                         <li>
-                            <a href="../pages/mailbox.php">
+                            <a href="mailbox.php">
                                 <i class="fa fa-envelope"></i> <span>Mailbox</span>
                                 <small class="badge pull-right bg-red">soon</small>
                             </a>
@@ -168,74 +169,27 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                 <!-- /.sidebar -->
             </aside>
 
+        </div><!-- ./wrapper -->
+
+        <div>
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">                
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Manage Teacher
+                        Dashboard
                         <small>Control panel</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class="active">Manage Teacher</li>
-                        <li class="active">Add Expertise</li>
+                        <li class="active">Dashboard</li>
                     </ol>
                 </section>
-            
+
                 <!-- Main content -->
                 <section class="content">
-                <div  class="form">
-                    <form id="manageform" action = "action_mteacher-exp.php" method="post"> 
-                       <p id="tname" class="tpad"><label for="enum">Teacher Name</label></p> 
-                       <select id="tname" class="select-style gender" onChange="document.getElementById('enumber').value=this.value;"  required="">
-                        <option value="">Select Teacher</option>
-                        <?php
-                            $sql = "SELECT * FROM teacher";
-                            $result = mysqli_query($conn, $sql);
-                            if(mysqli_num_rows($result) > 0) {
-                                while($row = mysqli_fetch_assoc($result)) {
-                                    echo "<option value='".$row["employee_id"]. "'>".$row["lastname"]. ", ".$row["firstname"]."</option>";
-                                }
-                            } else {
-                                echo "NO RESULT";
-                            }
-                        ?>
-                        </select>
-
-                        <p id="tpad" class="tpad"><label for="enum">Employee Number</label></p> 
-                        
-                        <input id="enumber" name="enumber" placeholder="Employee Number" type="text"s>
-
-                        <label id="exp" class="tpad">Expertise</label> 
-                        <label name="nyears">No. of Years</label>
-                        <select id="expbox" name="expertise" class="select-style gender" required="">
-                           <option value="">Select Subject</option>
-                           <?php
-                            $sql = "SELECT * FROM subject";
-                            $result = mysqli_query($conn, $sql);
-                            if(mysqli_num_rows($result) > 0) {
-                                while($row = mysqli_fetch_assoc($result)) {
-                                    echo "<option>".$row["subject_code"]. "</option>";
-                                }
-                            } else {
-                                echo "NO RESULT";
-                            }
-                        ?>
-                        </select>
-
-                        <input id="years" name="years" placeholder="# of years" type="text" required=""> 
-
-          
-                        <!-- <input class="buttom" name="submit" id="submit" tabindex="5" value="Create" type="submit">  -->
-                        <button class="btn btn-success" name="submit" id="submit" tabindex="5" value="Create" type="submit">Submit
-
-
-
-                        </button>
-                        
-                     </form> 
-                </div>      
+                <h2>Overview of the schedule</h2>
+                <p>Blah blah...</p>
 
                 
 
@@ -250,8 +204,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
     <script src="../js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script> 
-         
+
     <script src="../js/ctabs.js"></script>    
-    </script>
   </body>
-</html> 
+</html>

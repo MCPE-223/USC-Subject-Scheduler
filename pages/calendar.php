@@ -1,6 +1,5 @@
 <!-- Check if session is not registered, redirect back to login page. -->
 <?php
-require("connect.php");
 session_start();
 if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1){
     echo '<script language="javascript"> alert("You have to login first!")</script>';   
@@ -24,8 +23,6 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
     <link href="../css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <link href="../css/ctabs.css" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,7 +45,43 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
                         <!-- Messages: style can be found in dropdown.less-->
-                        
+                        <li class="dropdown messages-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-envelope"></i>
+                                <span class="label label-success">1</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">You have new messages</li>
+                                
+                                <li class="footer"><a href="#">See All Messages</a></li>
+                            </ul>
+                        </li>
+                        <!-- Notifications: style can be found in dropdown.less -->
+                        <li class="dropdown notifications-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-warning"></i>
+                                <span class="label label-warning">1</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">You have new notifications</li>
+                                
+                                <li class="footer"><a href="#">View all</a></li>
+                            </ul>
+                        </li>
+                        <!-- Tasks: style can be found in dropdown.less -->
+                        <li class="dropdown tasks-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-tasks"></i>
+                                <span class="label label-danger">1</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">You have new tasks</li>
+                                
+                                <li class="footer">
+                                    <a href="#">View all tasks</a>
+                                </li>
+                            </ul>
+                        </li>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu" id="just">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="Just()">
@@ -72,7 +105,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="../index.html" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -114,13 +147,13 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="treeview">
+                        <li>
                             <a href="#" onClick="displayTab(0)">
                                 <i class="fa fa-list-alt"></i> <span>Subject</span>
                                 <i class="fa fa-angle-down pull-right"></i>
                             </a> 
                             <ul class="treeview-menu">
-                              <li><a href="../pages/csubject.php"><i class="fa fa-angle-double-right"></i> Create Subject</a></li>
+                              <li><a href="csubject.php"><i class="fa fa-angle-double-right"></i> Create Subject</a></li>
                               <li><a href="msubject.php"><i class="fa fa-angle-double-right"></i> Manage Subject</a></li>
                             </ul>
                         </li>
@@ -131,9 +164,9 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                                 <i class="fa fa-angle-down pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../pages/cteacher.php"><i class="fa fa-angle-double-right"></i> Create Teacher</a></li>
+                                <li><a href="cteacher.php"><i class="fa fa-angle-double-right"></i> Create Teacher</a></li>
                                 <li><a href="mteacher.php"><i class="fa fa-angle-double-right"></i> Manage Teacher</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" id="add-pad"></i> Add Expertise</a></li>
+                                <li><a href="mteacher-exp.php"><i class="fa fa-angle-double-right" id="add-pad"></i> Add Expertise</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -163,7 +196,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                                 <small class="badge pull-right bg-red">soon</small>
                             </a>
                         </li>
-                    </ul>
+                    </ul>   
                 </section>
                 <!-- /.sidebar -->
             </aside>
@@ -173,85 +206,29 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Manage Teacher
+                        Calendar
                         <small>Control panel</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class="active">Manage Teacher</li>
-                        <li class="active">Add Expertise</li>
+                        <li class="active">Calendar</li>
                     </ol>
                 </section>
-            
+
                 <!-- Main content -->
                 <section class="content">
-                <div  class="form">
-                    <form id="manageform" action = "action_mteacher-exp.php" method="post"> 
-                       <p id="tname" class="tpad"><label for="enum">Teacher Name</label></p> 
-                       <select id="tname" class="select-style gender" onChange="document.getElementById('enumber').value=this.value;"  required="">
-                        <option value="">Select Teacher</option>
-                        <?php
-                            $sql = "SELECT * FROM teacher";
-                            $result = mysqli_query($conn, $sql);
-                            if(mysqli_num_rows($result) > 0) {
-                                while($row = mysqli_fetch_assoc($result)) {
-                                    echo "<option value='".$row["employee_id"]. "'>".$row["lastname"]. ", ".$row["firstname"]."</option>";
-                                }
-                            } else {
-                                echo "NO RESULT";
-                            }
-                        ?>
-                        </select>
-
-                        <p id="tpad" class="tpad"><label for="enum">Employee Number</label></p> 
-                        
-                        <input id="enumber" name="enumber" placeholder="Employee Number" type="text"s>
-
-                        <label id="exp" class="tpad">Expertise</label> 
-                        <label name="nyears">No. of Years</label>
-                        <select id="expbox" name="expertise" class="select-style gender" required="">
-                           <option value="">Select Subject</option>
-                           <?php
-                            $sql = "SELECT * FROM subject";
-                            $result = mysqli_query($conn, $sql);
-                            if(mysqli_num_rows($result) > 0) {
-                                while($row = mysqli_fetch_assoc($result)) {
-                                    echo "<option>".$row["subject_code"]. "</option>";
-                                }
-                            } else {
-                                echo "NO RESULT";
-                            }
-                        ?>
-                        </select>
-
-                        <input id="years" name="years" placeholder="# of years" type="text" required=""> 
-
-          
-                        <!-- <input class="buttom" name="submit" id="submit" tabindex="5" value="Create" type="submit">  -->
-                        <button class="btn btn-success" name="submit" id="submit" tabindex="5" value="Create" type="submit">Submit
-
-
-
-                        </button>
-                        
-                     </form> 
-                </div>      
-
-                
+                <h2>Soon to open.... </h2>
 
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
-
 
     <!-- jQuery 2.0.2 -->
     <script src="../js/jquery-2.1.4.min.js" type="text/javascript"></script>
     <!-- jQuery UI 1.10.3 -->
     <script src="../js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../js/bootstrap.min.js"></script> 
-         
+    <script src="../js/bootstrap.min.js"></script>    
     <script src="../js/ctabs.js"></script>    
-    </script>
   </body>
 </html> 

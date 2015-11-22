@@ -1,5 +1,11 @@
+<!-- Check if session is not registered, redirect back to login page. -->
 <?php
-    require("connect.php");
+require("connect.php");
+session_start();
+if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1){
+    echo '<script language="javascript"> alert("You have to login first!")</script>';   
+    echo "<script>window.location.href='login.html';</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +37,7 @@
   </head>
   <body class="skin-blue">
     <header class="header">
-            <a href="overview.html" class="logo">
+            <a href="overview.php" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 Admin
             </a>
@@ -67,7 +73,7 @@
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="../pages/login.html" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -105,7 +111,7 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li class="active">
-                            <a href="overview.html">
+                            <a href="overview.php">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
@@ -115,7 +121,7 @@
                                 <i class="fa fa-angle-down pull-right"></i>
                             </a> 
                             <ul class="treeview-menu">
-                              <li><a href="../pages/csubject.html"><i class="fa fa-angle-double-right"></i> Create Subject</a></li>
+                              <li><a href="../pages/csubject.php"><i class="fa fa-angle-double-right"></i> Create Subject</a></li>
                               <li><a href="#"><i class="fa fa-angle-double-right"></i> Manage Subject</a></li>
                             </ul>
                         </li>
@@ -126,7 +132,7 @@
                                 <i class="fa fa-angle-down pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../pages/cteacher.html"><i class="fa fa-angle-double-right"></i> Create Teacher</a></li>
+                                <li><a href="../pages/cteacher.php"><i class="fa fa-angle-double-right"></i> Create Teacher</a></li>
                                 <li><a href="mteacher.php"><i class="fa fa-angle-double-right"></i> Manage Teacher</a></li>
                                 <li><a href="mteacher-exp.php"><i class="fa fa-angle-double-right" id="add-pad"></i> Add Expertise</a></li>
                             </ul>
@@ -138,22 +144,22 @@
                                 <i class="fa fa-angle-down pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                              <li><a href="cbuild.html"><i class="fa fa-angle-double-right"></i> Create Building</a></li>
+                              <li><a href="cbuild.php"><i class="fa fa-angle-double-right"></i> Create Building</a></li>
                               <li><a href="croom.php"><i class="fa fa-angle-double-right"></i> Create Room</a></li>
-                              <li><a href="cay.html"><i class="fa fa-angle-double-right"></i> Create Acadamic Year</a></li>
-                              <li><a href="cas.html"><i class="fa fa-angle-double-right"></i> Create Acadamic Sem</a></li>
+                              <li><a href="cay.php"><i class="fa fa-angle-double-right"></i> Create Acadamic Year</a></li>
+                              <li><a href="cas.php"><i class="fa fa-angle-double-right"></i> Create Acadamic Sem</a></li>
                               <!-- <li><a href="cdp.html"><i class="fa fa-angle-double-right"></i> Customize Day/Period</a></li> -->
                               <li><a href="csched.php"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="calendar.html">
+                            <a href="calendar.php">
                                 <i class="fa fa-calendar"></i> <span>Calendar</span>
                                 <small class="badge pull-right bg-red">soon</small>
                             </a>
                         </li>
                         <li>
-                            <a href="../pages/mailbox.html">
+                            <a href="../pages/mailbox.php">
                                 <i class="fa fa-envelope"></i> <span>Mailbox</span>
                                 <small class="badge pull-right bg-red">soon</small>
                             </a>

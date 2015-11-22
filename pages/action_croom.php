@@ -3,7 +3,6 @@
 require("connect.php");
 
 
-
 	$sql = "INSERT INTO 
 			room( building_id, building_code, room_no, room_type)
 			SELECT building_id, '$_POST[building_code]', '$_POST[rnum]', '$_POST[rtype]' 
