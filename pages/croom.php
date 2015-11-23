@@ -1,3 +1,12 @@
+<!-- Check if session is not registered, redirect back to login page. -->
+<?php
+require("connect.php");
+session_start();
+if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1){
+    echo '<script language="javascript"> alert("You have to login first!")</script>';   
+    echo "<script>window.location.href='login.html';</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,6 +24,8 @@
     <link href="../css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="../css/ctabs.css" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,8 +35,8 @@
     <![endif]-->
   </head>
   <body class="skin-blue">
-      <header class="header">
-            <a href="overview.html" class="logo">
+    <header class="header">
+            <a href="overview.php" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 Admin
             </a>
@@ -33,54 +44,14 @@
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
-                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
+                
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
                         <!-- Messages: style can be found in dropdown.less-->
-                        <li class="dropdown messages-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-envelope"></i>
-                                <span class="label label-success">1</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">You have new messages</li>
-                                <li class="footer"><a href="#">See All Messages</a></li>
-                            </ul>
-                        </li>
-                        <!-- Notifications: style can be found in dropdown.less -->
-                        <li class="dropdown notifications-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-warning"></i>
-                                <span class="label label-warning">1</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">You have new notifications</li>
-                                
-                                <li class="footer"><a href="#">View all</a></li>
-                            </ul>
-                        </li>
-                        <!-- Tasks: style can be found in dropdown.less -->
-                        <li class="dropdown tasks-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-tasks"></i>
-                                <span class="label label-danger">1</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">You have new tasks</li>
-                                
-                                <li class="footer">
-                                    <a href="#">View all tasks</a>
-                                </li>
-                            </ul>
-                        </li>
+                        
                         <!-- User Account: style can be found in dropdown.less -->
-                        <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <li class="dropdown user user-menu" id="just">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="Just()">
                                 <i class="glyphicon glyphicon-user"></i>
                                 <span>CPE Admin<i class="caret"></i></span>
                             </a>
@@ -94,24 +65,14 @@
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
-                                <li class="user-body">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </li>
+                                
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="../index.html" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -149,7 +110,7 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li class="active">
-                            <a href="overview.html">
+                            <a href="overview.php">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
@@ -159,8 +120,8 @@
                                 <i class="fa fa-angle-down pull-right"></i>
                             </a> 
                             <ul class="treeview-menu">
-                              <li><a href="csubject.html"><i class="fa fa-angle-double-right"></i> Create Subject</a></li>
-                              <li><a href="msubject.html"><i class="fa fa-angle-double-right"></i> Manage Subject</a></li>
+                              <li><a href="../pages/csubject.php"><i class="fa fa-angle-double-right"></i> Create Subject</a></li>
+                              <li><a href="../pages/msubject.php"><i class="fa fa-angle-double-right"></i> Manage Subject</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -170,8 +131,9 @@
                                 <i class="fa fa-angle-down pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="cteacher.html"><i class="fa fa-angle-double-right"></i> Create Teacher</a></li>
-                                <li><a href="mteacher.html"><i class="fa fa-angle-double-right"></i> Manage Teacher</a></li>
+                                <li><a href="../pages/cteacher.php"><i class="fa fa-angle-double-right"></i> Create Teacher</a></li>
+                                <li><a href="mteacher.php"><i class="fa fa-angle-double-right"></i> Manage Teacher</a></li>
+                                <li><a href="mteacher-exp.php"><i class="fa fa-angle-double-right" id="add-pad"></i> Add Expertise</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -181,20 +143,22 @@
                                 <i class="fa fa-angle-down pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                              <li><a href="cbuild.html"><i class="fa fa-angle-double-right"></i> Create Building</a></li>
-                              <li><a href="croom.html"><i class="fa fa-angle-double-right"></i> Create Room</a></li>
-                              <!-- <li><a href="index.html"><i class="fa fa-angle-double-right"></i> Customize Day/Period</a></li> -->
-                              <li><a href="csched.html"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
+                              <li><a href="cbuild.php"><i class="fa fa-angle-double-right"></i> Create Building</a></li>
+                              <li><a href="#"><i class="fa fa-angle-double-right"></i> Create Room</a></li>
+                              <li><a href="cay.php"><i class="fa fa-angle-double-right"></i> Create Acadamic Year</a></li>
+                              <li><a href="cas.php"><i class="fa fa-angle-double-right"></i> Create Acadamic Sem</a></li>
+                              <!-- <li><a href="../pages/cdp.html"><i class="fa fa-angle-double-right"></i> Customize Day/Period</a></li> -->
+                              <li><a href="csched.php"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="calendar.html">
+                            <a href="../pages/calendar.php">
                                 <i class="fa fa-calendar"></i> <span>Calendar</span>
                                 <small class="badge pull-right bg-red">soon</small>
                             </a>
                         </li>
                         <li>
-                            <a href="mailbox.html">
+                            <a href="../pages/mailbox.php">
                                 <i class="fa fa-envelope"></i> <span>Mailbox</span>
                                 <small class="badge pull-right bg-red">soon</small>
                             </a>
@@ -204,27 +168,51 @@
                 <!-- /.sidebar -->
             </aside>
 
-        </div><!-- ./wrapper -->
-
-        <div>
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">                
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Dashboard
+                        Create Room
                         <small>Control panel</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class="active">Dashboard</li>
+                        <li class="active">Create Room</li>
                     </ol>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                <h2>Overview of the schedule</h2>
-                <p>Blah blah...</p>
+                <div  class="form">
+                    <form action = "action_croom.php" method="post"> 
+                        <p class='contact'> <label>Building Code</label></p>
+                        <div class='bwrap'>
+                            <select id="bcode" name="building_code" class="select-style gender" required>
+                                <option value="">Select Building</option>
+                                <?php
+                                    $sql = "SELECT * FROM building";
+                                    $result = mysqli_query($conn, $sql);
+                                    if(mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            echo "<option>".$row["building_code"]."</option>";
+                                        }
+                                    } else {
+                                        echo "NO RESULT";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+
+                        <p class="contact"><label for="lname">Room Number</label></p> 
+                        <input id="rnum" name="rnum" placeholder="Room Number" required="" tabindex="1" type="text"> 
+                            
+                        <p class="contact"><label for="lname">Room Type</label></p> 
+                        <input id="rtype" name="rtype" placeholder="Room Type" required="" tabindex="1" type="text">                         
+                        <!-- <input class="buttom" name="submit" id="submit" tabindex="5" value="Create" type="submit">  -->
+                        <button class="btn btn-success" name="submit" id="submit" tabindex="5" value="Create" type="submit">Submit</button>     
+                     </form> 
+                </div>      
 
                 
 
@@ -238,8 +226,7 @@
     <!-- jQuery UI 1.10.3 -->
     <script src="../js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../js/bootstrap.min.js"></script> 
-
+    <script src="../js/bootstrap.min.js"></script>     
     <script src="../js/ctabs.js"></script>    
   </body>
-</html>
+</html> 

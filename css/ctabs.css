@@ -1,5 +1,5 @@
 .form{
-	width:470px; margin:0 auto; padding-left:50px; padding-top:20px; padding-bottom: 10px
+	width:490px; margin:0 auto; padding-left:50px; padding-top:20px; padding-bottom: 10px
 }
 .form fieldset{border:0px; padding:0px; margin:0px;}
 .form p.contact { font-size: 12px; margin:0px 0px 10px 0;line-height: 14px; font-family:Arial, Helvetica;}
@@ -30,7 +30,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
   text-overflow: ellipsis;
-  white-space: nowrap;}
+  /*white-space: nowrap;*/}
 .form .gender {
   width:410px;
   }
@@ -40,19 +40,16 @@
 /* Table 1 Style */
 table.table1{
     font-family: "Trebuchet MS", sans-serif;
-    font-size: 16px;
     font-weight: bold;
-    line-height: 1.4em;
+    line-height: 0em;
     font-style: normal;
     border-collapse:separate;
-    border-spacing: 2px;
+    border-spacing: 1px;
 }
 .table1 thead th{
-    padding:15px;
+    text-align: center;
     color:#fff;
     text-shadow:1px 1px 1px #568F23;
-    border:1px solid #93CE37;
-    border-bottom:3px solid #9ED929;
     background-color:#9DD929;
     background:-webkit-gradient(
         linear,
@@ -82,9 +79,7 @@ table.table1{
     color:#fff;
     text-shadow:1px 1px 1px #568F23;
     background-color:#9DD929;
-    border:1px solid #93CE37;
-    border-right:3px solid #9ED929;
-    padding:0px 10px;
+    padding:0px 12px;
     background:-webkit-gradient(
         linear,
         left bottom,
@@ -116,7 +111,7 @@ table.table1{
     color:#666;
 }
 .table1 tbody td{
-    padding:10px;
+    padding:4px;
     text-align:center;
     background-color:#DEF3CA;
     border: 2px solid #E7EFE0;
@@ -127,26 +122,28 @@ table.table1{
     text-shadow:1px 1px 1px #fff;
 }
 
+
+/*specific attributes*/
 .ctime
 {
     font-family:"Trebuchet MS",sans-serif;
+    font-size: 11px;
     font-weight: bold;
     text-shadow:1px 1px 1px #568F23;
     background: transparent;
     text-align: center;
     color: #ffffff;
     vertical-align: middle;
-    padding: 0px;
-    line-height: 30px;
-    width:100px;
+    width: 90px;
     border-collapse: collapse;
     border-spacing: 0;
     border: 0px;
+    margin-left: 10px;
 }
 
 .pre-wrap
 {
-  margin-left:45px;
+  width: 120px;
 }
 
 .add
@@ -189,7 +186,7 @@ table.table1{
 
 #years
 {
-  width: 110px;
+  width: 145px;
   display: inline;
 }
 
@@ -213,7 +210,12 @@ table.table1{
   margin: -10px 0 15px 0;
 }
 
-#ysched
+#scode
+{
+  margin-bottom: 10px;
+}
+
+.ysched
 {
   width: 450px;
   margin:auto;
@@ -231,4 +233,67 @@ table.table1{
   background-position: center right;
   background-repeat: no-repeat;
   border: 0px solid #FFF;
+}
+
+.search
+{
+  width: 150px;
+}
+
+.sselect
+{
+  -webkit-border-radius: 2px;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-padding-end: 0px;
+  -webkit-padding-start: 2px;
+  -webkit-user-select: none;
+  background-image: url(), 
+    -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+  background-position: center right;
+  background-repeat: no-repeat;
+  border: 0px solid #FFF;
+  color: #555;
+  font-size: inherit;
+  margin: 0;
+  overflow: hidden;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-overflow: ellipsis;
+  width: 92px;
+  font-size: 10px;
+}
+
+#pre-label-year
+{
+  padding-right: 25px;
+}
+
+#pre-label-term
+{
+  padding-right: 5px;
+}
+#add-pad
+{
+  margin-left:15px;
+}
+
+#div2, #div3
+{
+  display: none;
+}
+
+.black
+{
+  color: #000000;
+  text-shadow: none;
+}
+
+@media print {
+    @page {
+      margin: 2cm;   
+    }
+    #go_button
+    {
+      display:none;
+    }
 }
