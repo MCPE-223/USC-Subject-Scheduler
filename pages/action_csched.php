@@ -8,7 +8,7 @@ if(!empty($_POST["building_code"])) {
     if(mysqli_num_rows($result) > 0) {
         echo "<option> Select Room </option> ";
         while($row = mysqli_fetch_assoc($result)) {
-            echo "<option>" .$row["room_no"]. "</option>";
+            echo "<option>" .$row["building_code"]. "".$row["room_no"]. "</option>";
         }
     } else {
         echo "NO RESULT";

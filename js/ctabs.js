@@ -42,6 +42,21 @@ function getSubject(val) {
     });
 }
 
+function getOverview(year, sem, tid) {
+    // if(year!="" && sem !="" && tid !="") alert(year + ", " + sem + ", " + tid);
+    if(year!="" && sem !="" && tid !="")
+    {
+        $.ajax({
+        type: "POST",
+        url: "action_overview.php",
+        data: 'acad_year='+year + '&acad_sem='+sem + '&teacher_id='+tid,
+        success: function(data){
+            $("#moverview").html(data);
+        }
+        });
+    }
+}
+
 function Just()
 {
     var x=document.getElementById("just");
