@@ -190,8 +190,9 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                 <section class="content">
                 <div id="toprint" >
                     <div align="center">
+                        <!-- <form action="" method="post"> -->
                         <label>Year: </label>
-                        <select class="select-style search" name="ayear" required="">
+                        <select class="select-style search" id="ayear" name="ayear" required="">
                         <option value="">Select Year</option>
                         <?php 
                                 $sql = "SELECT * FROM acad_year";
@@ -207,7 +208,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                         </select>
 
                         <label id="pre-label-term">Term: </label>
-                        <select class="select-style search" name="asem" required="">
+                        <select class="select-style search" id="asem" name="asem" required="">
                         <option value="">Select Sem</option>
                         <?php 
                                 $sql = "SELECT * FROM acad_sem";
@@ -236,11 +237,12 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                             }
                         ?>
                         </select>
-                        <button id="go_button" class="btn btn" type="submit">Go</button>
+                        <button id="go_button" class="btn btn" onClick="getOverview(document.getElementById('ayear').value, document.getElementById('asem').value, document.getElementById('teacher').value)">Go</button>
                         <button id="go_button" class="btn btn-info" onclick="window.print()" type="submit">Print</button>
                         <p></p>
+                        <!-- </form> -->
                     </div>  
-                    <div class="ttable">
+                    <div class="ttable" id="moverview">
                         <table class="table1">
                         <thead>
                             <tr>
@@ -262,7 +264,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                                     </div>
                                 </th>
                                 <td> 
-                                    <input class="ctime black" type="text" value="-----" name="mon_7_30am"> 
+                                    <input class="ctime black" type="text" value="-----" id="mon_7_30am"> 
                                     <input class="ctime black" type="text" value="-----" name="mon_7_30am_room"> 
                                 </td>
                                 <td> 
