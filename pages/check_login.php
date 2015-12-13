@@ -9,13 +9,14 @@ $mypassword=md5($mypassword);
 $sql ="SELECT * FROM user WHERE username = '$myusername' AND password = '$mypassword' ";
 	$result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_assoc($result)){
     	session_start();
-    	$_SESSION['user'] = $myusername;
-    	$_SESSION['pass'] = $mypassword;
     	$_SESSION['user_login_status'] = 1;
+        $_SESSION['name'] = $row['name'];
 
         echo "<script>window.location.href='overview.php';</script>";
 		// echo $myusername;
+        }
     } else {
         echo '<script language="javascript">';
         echo 'alert("Wrong Credentials!")';

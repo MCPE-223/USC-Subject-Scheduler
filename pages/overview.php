@@ -2,7 +2,7 @@
 <?php
 require("connect.php");
 session_start();
-if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1){
+if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 2){
     echo '<script language="javascript"> alert("You have to login first!")</script>';   
     echo "<script>window.location.href='login.html';</script>";
 }
@@ -15,7 +15,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>USC Automatic Subject Scheduler</title>
+    <title>USC Subject Scheduler</title>
 
     <!-- Bootstrap -->
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -39,7 +39,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
       <header class="header">
             <a href="overview.php" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                Admin
+                USC Subject Scheduler
             </a>
 
             <!-- Header Navbar: style can be found in header.less -->
@@ -54,15 +54,14 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                         <li class="dropdown user user-menu" id="just">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="Just()">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span>CPE Admin<i class="caret"></i></span>
+                                <span><?php echo $_SESSION['name']; ?> <i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
                                     <img src="../img/avatar.png" class="img-circle" alt="User Image" />
                                     <p>
-                                        CPE Admin - System Adminstrator
-                                        <small>Member since July 2015</small>
+                                        <?php echo $_SESSION['name']; ?> - System Adminstrator
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
@@ -93,7 +92,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                             <img src="../img/avatar.png" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                            <p>Hello, CPE Admin</p>
+                            <p>Hello, <?php echo $_SESSION['name']; ?></p>
 
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
