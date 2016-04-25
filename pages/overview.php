@@ -149,6 +149,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                               <li><a href="cas.php"><i class="fa fa-angle-double-right"></i> Create Acadamic Sem</a></li>
                               <!-- <li><a href="index.html"><i class="fa fa-angle-double-right"></i> Customize Day/Period</a></li> -->
                               <li><a href="csched.php"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
+                              <li><a href="cclasses.php"><i class="fa fa-angle-double-right"></i> Create Classes</a></li>
                             </ul>
                         </li>
                         <li>
@@ -187,6 +188,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
 
                 <!-- Main content -->
                 <section class="content">
+                
                 <div id="toprint" >
                     <div align="center">
                         <!-- <form action="" method="post"> -->

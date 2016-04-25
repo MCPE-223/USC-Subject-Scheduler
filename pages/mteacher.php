@@ -149,6 +149,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                               <li><a href="cas.php"><i class="fa fa-angle-double-right"></i> Create Acadamic Sem</a></li>
                               <!-- <li><a href="cdp.html"><i class="fa fa-angle-double-right"></i> Customize Day/Period</a></li> -->
                               <li><a href="csched.php"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
+                              <li><a href="cclasses.php"><i class="fa fa-angle-double-right"></i> Create Classes</a></li>
                             </ul>
                         </li>
                         <li>
@@ -181,7 +182,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                         <li class="active">Manage Teacher</li>
                     </ol>
                 </section>
-			
+            
                 <!-- Main content -->
                 <section class="content">
                 <div  class="form">
@@ -189,24 +190,24 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                        <p id="tname" class="tpad"><label for="enum">Teacher Name</label></p> 
                        <select id="tname" class="select-style gender" onChange="document.getElementById('enumber').value=this.value;"  required="" >
                         <option value="">Select Teacher</option>
-						<?php
-							$sql = "SELECT * FROM teacher";
-							$result = mysqli_query($conn, $sql);
-							if(mysqli_num_rows($result) > 0) {
-								while($row = mysqli_fetch_assoc($result)) {
-									echo "<option value='".$row["employee_id"]. "'>".$row["lastname"]. ", ".$row["firstname"]."</option>";
-								}
-							} else {
-								echo "NO RESULT";
-							}
-						?>
-						</select>
+                        <?php
+                            $sql = "SELECT * FROM teacher";
+                            $result = mysqli_query($conn, $sql);
+                            if(mysqli_num_rows($result) > 0) {
+                                while($row = mysqli_fetch_assoc($result)) {
+                                    echo "<option value='".$row["employee_id"]. "'>".$row["lastname"]. ", ".$row["firstname"]."</option>";
+                                }
+                            } else {
+                                echo "NO RESULT";
+                            }
+                        ?>
+                        </select>
 
                         <p id="tpad" class="tpad"><label for="enum">Employee Number</label></p> 
                         
-						<input id="enumber" name="enumber" placeholder="Employee Number" type="text">
-						
-						
+                        <input id="enumber" name="enumber" placeholder="Employee Number" type="text">
+                        
+                        
                         <label id="exp" for="estat">Employment Status</label>
                         <label for="rank">Rank</label>
                         <select id="expbox" name="rank" class="select-style gender"  required="" >
@@ -227,8 +228,11 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                         <p></p>
                         <!-- <input class="buttom" name="submit" id="submit" tabindex="5" value="Create" type="submit">  -->
                         <button class="btn btn-success" name="submit" id="submit" tabindex="5" value="Create" type="submit">Submit</button>
-						
-                     </form> 
+                        
+                        
+                        
+                     </form>
+                      
                 </div>      
 
                 

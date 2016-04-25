@@ -148,6 +148,7 @@ if(!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 
                               <li><a href="#"><i class="fa fa-angle-double-right"></i> Create Acadamic Year</a></li>
                               <li><a href="cas.php"><i class="fa fa-angle-double-right"></i> Create Acadamic Sem</a></li>
                               <li><a href="csched.php"><i class="fa fa-angle-double-right"></i> Create Schedule</a></li>
+                              <li><a href="cclasses.php"><i class="fa fa-angle-double-right"></i> Create Classes</a></li>
                             </ul>
                         </li>
                         <li>
